@@ -18,6 +18,8 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/budget", {
 
 // routes
 require("./routes/api-routes.js")(app);
+require("./routes/html-routes.nodjs")(app);
+
 
 app.listen(PORT, () => {
   console.log(`App running on port ${PORT}!`);

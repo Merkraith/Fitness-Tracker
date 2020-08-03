@@ -1,29 +1,10 @@
-const router = require("express").Router();
+// const router = require("express").Router();
 const Fitness = require("../models/fitness.js");
 
-router.post("/api/fitness", ({ body }, res) => {
-  Fitness.create(body)
-    .then(dbFitness => {
-      res.json(dbFitness);
-    })
-    .catch(err => {
-      res.status(400).json(err);
-    });
-});
+module.exports = function (app) {
 
-router.post("/api/fitness/bulk", ({ body }, res) => {
-  Fitness.insertMany(body)
-    .then(dbFitness => {
-      res.json(dbFitness);
-    })
-    .catch(err => {
-      res.status(400).json(err);
-    });
-});
-
-router.get("/api/fitness", (req, res) => {
+app.get("/api/fitness", ({ body }, res) => {
   Fitness.find({})
-    .sort({ date: -1 })
     .then(dbFitness => {
       res.json(dbFitness);
     })
@@ -32,4 +13,34 @@ router.get("/api/fitness", (req, res) => {
     });
 });
 
-module.exports = router;
+app.post("/api/fitness", ({ body }, res) => {
+  Fitness.create({})
+    .then(dbFitness => {
+      res.json(dbFitness);
+    })
+    .catch(err => {
+      res.status(400).json(err);
+    });
+});
+
+app.put("/api/fitness/:id", (req, res) => {
+  Fitness.findByIdAndUpdate(req.params.id, {$push: {expercies: req.body} })
+    .then(dbFitness => {
+      res.json(dbFitness);
+    })
+    .catch(err => {
+      res.status(400).json(err);
+    });
+});
+
+app.get("/api/fitness/range", (req, res) => {
+  Fitness.find({})
+    .then(dbFitness => {
+      res.json(dbFitness);
+    })
+    .catch(err => {
+      res.status(400).json(err);
+    });
+});
+
+}
