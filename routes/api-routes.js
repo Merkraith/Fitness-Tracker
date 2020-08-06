@@ -1,9 +1,9 @@
-// const router = require("express").Router();
 const Workout = require("../models/fitness.js");
+const mongojs = require('mongojs')
 
 module.exports = function (app) {
 
-app.get("/api/workouts", ({ body }, res) => {
+app.get("/api/workouts", (req, res) => {
   Workout.find({})
     .then(dbWorkout => {
       res.json(dbWorkout);
@@ -13,7 +13,7 @@ app.get("/api/workouts", ({ body }, res) => {
     });
 });
 
-app.post("/api/workouts", ({ body }, res) => {
+app.post("/api/workouts", (req, res) => {
   Workout.create({})
     .then(dbWorkout => {
       res.json(dbWorkout);
