@@ -7,6 +7,7 @@
 
 # Title:  Fitness Tracker
 
+## Deployed Site: https://evening-sands-09320.herokuapp.com/
 
 ## Description
   Fitness Tracker lets you input data from workouts, then compares your daily data in graphs on a dashboard page.
@@ -24,14 +25,12 @@
 ## Usage
   In the command line of the working directory, type node server.js to launch it locally, or view the deployed link here in the readme
 
-## Licencse
-  none
+## Screenshots
 
-## Contributing
-  none
+![ft1](/ft1.jpg)
+![ft2](/ft2.jpg)
+![ft3](/ft3.png)
 
-## Tests
-  none
 
 # Author: Merkraith
 
